@@ -568,6 +568,7 @@ $("#chat-form").addEventListener("submit", async (event) => {
       return resultData.result || null;
     }));
     const availableResults = results.filter(Boolean);
+	// Follow-up context: prefer latest evaluate_labeled (has confusion matrix); fallback to last result.
     if (resultIds.length) {
       // A follow-up question needs the result that actually carries the numbers
       // being asked about. In the conditional task the evaluation runs before
