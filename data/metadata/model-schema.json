@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "source_dataset_sha256": "d13e54cf1970ffedbf1043196c135da3187c90a82e397f681d843ed320249242",
+  "target": {
+    "name": "Label",
+    "accepted_values": [0, 1],
+    "mapping": {"0": "goodware", "1": "malware"},
+    "allowed_in_inference_input": false
+  },
+  "row_identifier": {
+    "name": "SHA1",
+    "model_input": false,
+    "required_for_training_split": true,
+    "required_for_single_inference": false
+  },
+  "excluded_metadata": ["FirstSeenDate"],
+  "features": [
+    {"name":"BaseOfCode","kind":"numeric","missing_allowed":false},
+    {"name":"BaseOfData","kind":"numeric","missing_allowed":false},
+    {"name":"Characteristics","kind":"numeric","missing_allowed":false},
+    {"name":"DllCharacteristics","kind":"numeric","missing_allowed":false},
+    {"name":"Entropy","kind":"numeric","missing_allowed":false},
+    {"name":"FileAlignment","kind":"numeric","missing_allowed":false},
+    {"name":"Identify","kind":"categorical","missing_allowed":true},
+    {"name":"ImageBase","kind":"numeric","missing_allowed":false},
+    {"name":"ImportedDlls","kind":"text","missing_allowed":false},
+    {"name":"ImportedSymbols","kind":"text","missing_allowed":false},
+    {"name":"Machine","kind":"numeric","missing_allowed":false},
+    {"name":"Magic","kind":"numeric","missing_allowed":false},
+    {"name":"NumberOfRvaAndSizes","kind":"numeric","missing_allowed":false},
+    {"name":"NumberOfSections","kind":"numeric","missing_allowed":false},
+    {"name":"NumberOfSymbols","kind":"numeric","missing_allowed":false},
+    {"name":"PE_TYPE","kind":"numeric","missing_allowed":false},
+    {"name":"PointerToSymbolTable","kind":"numeric","missing_allowed":false},
+    {"name":"Size","kind":"numeric","missing_allowed":false},
+    {"name":"SizeOfCode","kind":"numeric","missing_allowed":false},
+    {"name":"SizeOfHeaders","kind":"numeric","missing_allowed":false},
+    {"name":"SizeOfImage","kind":"numeric","missing_allowed":false},
+    {"name":"SizeOfInitializedData","kind":"numeric","missing_allowed":false},
+    {"name":"SizeOfOptionalHeader","kind":"numeric","missing_allowed":false},
+    {"name":"SizeOfUninitializedData","kind":"numeric","missing_allowed":false},
+    {"name":"TimeDateStamp","kind":"numeric","missing_allowed":false}
+  ],
+  "input_matching": "by_name",
+  "unknown_field_policy": "reject",
+  "numeric_non_finite_policy": "reject"
+}

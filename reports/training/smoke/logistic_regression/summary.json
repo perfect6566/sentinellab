@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "run_type": "smoke",
+  "config": {
+    "model": "logistic_regression",
+    "folds": 2,
+    "seed": 20261028,
+    "smoke": true,
+    "rows": 2000,
+    "groups": 1948,
+    "row_ids_sha256": "fcf1b088e3db49e602ebc88cbd9eb40335a84ceed3fed634f72bb73e536d1b7a"
+  },
+  "config_hash": "651e3d53db06ebf85654b8d178bca7b3dadad8a0db7d10f286fbab1aaa15616f",
+  "model": "logistic_regression",
+  "display_name": "Logistic Regression",
+  "auc_mean": 0.8293832858317649,
+  "auc_std": 0.03207996102358074,
+  "accuracy_mean": 0.8255,
+  "accuracy_std": 0.02749999999999997,
+  "elapsed_seconds": 0.2579890419997355,
+  "fold_results": [
+    {
+      "status": "passed",
+      "config_hash": "651e3d53db06ebf85654b8d178bca7b3dadad8a0db7d10f286fbab1aaa15616f",
+      "model": "logistic_regression",
+      "fold": 1,
+      "train_rows": 1000,
+      "validation_rows": 1000,
+      "train_groups": 974,
+      "validation_groups": 974,
+      "group_overlap": 0,
+      "auc": 0.8614632468553457,
+      "accuracy": 0.853,
+      "elapsed_seconds": 0.14132412499975544,
+      "score_min": 0.0,
+      "score_max": 0.9638296956450978
+    },
+    {
+      "status": "passed",
+      "config_hash": "651e3d53db06ebf85654b8d178bca7b3dadad8a0db7d10f286fbab1aaa15616f",
+      "model": "logistic_regression",
+      "fold": 2,
+      "train_rows": 1000,
+      "validation_rows": 1000,
+      "train_groups": 974,
+      "validation_groups": 974,
+      "group_overlap": 0,
+      "auc": 0.7973033248081842,
+      "accuracy": 0.798,
+      "elapsed_seconds": 0.11666491699998005,
+      "score_min": 0.029247942900434816,
+      "score_max": 0.9803304522425264
+    }
+  ]
+}

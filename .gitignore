@@ -1,0 +1,64 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Raw, split and uploaded data
+data/raw/*
+data/splits/*
+data/sources/*
+!data/raw/.gitkeep
+!data/splits/.gitkeep
+!data/splits/README.md
+!data/sources/.gitkeep
+uploads/
+instance/
+
+# Generated model and experiment artifacts
+artifacts/*
+!artifacts/.gitkeep
+!artifacts/*.json
+!artifacts/production-model.joblib
+reports/generated/
+checkpoints/
+mlruns/
+
+# Generated result files
+results/
+*.log
+
+# Local report previews and captures (not part of submission; regenerated from reports/)
+reports/*-preview.html
+reports/english-project-report.pdf
+reports/chinese-project-report.pdf
+reports/english-project-report.pptx
+reports/~$*.pptx
+reports/pptx-preview/
+reports/screenshots/**
+
+# Editors and macOS
+.DS_Store
+.idea/
+.vscode/
+
+# Internal-only working notes (kept locally, not part of submission)
+HANDOFF.md
+TODO.md
+tasks.json
+Machine.pdf
+reports/pdf-requirements-audit-2026-11-03.md

@@ -1,0 +1,144 @@
+name: CI - Verify and Deploy Malware ML + AI Agent
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      simulate_failure:
+        description: "Intentionally fail after all checks to verify the CI gate"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test - unit, integration, and agent test suite (Python 3.11)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out the tested commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install development dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+          pip install --requirement requirements-runtime.txt
+
+      - name: Compile Python sources
+        run: python -m compileall -q app ml scripts wsgi.py
+
+      - name: Run deterministic test suite
+        run: pytest -q
+
+      - name: Verify production model and health endpoint
+        run: python -m scripts.verify_runtime
+
+      - name: Verify Gunicorn configuration
+        run: gunicorn --check-config --config gunicorn.conf.py wsgi:app
+
+      - name: Controlled failure injection
+        if: ${{ inputs.simulate_failure }}
+        run: |
+          echo "Controlled failure requested; this run must be red."
+          exit 1
+
+  deploy:
+    name: Deploy - release tested commit to Render and verify production health
+    needs: test
+    if: >-
+      needs.test.result == 'success' &&
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    environment: production
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - name: Check deployment configuration
+        id: config
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+          RENDER_PUBLIC_URL: ${{ vars.RENDER_PUBLIC_URL }}
+        run: |
+          if [[ -z "$RENDER_DEPLOY_HOOK_URL" || -z "$RENDER_PUBLIC_URL" ]]; then
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Render deployment skipped: configure production secret RENDER_DEPLOY_HOOK_URL and variable RENDER_PUBLIC_URL."
+          else
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Trigger deployment of this tested commit
+        if: steps.config.outputs.enabled == 'true'
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          separator='?'
+          [[ "$RENDER_DEPLOY_HOOK_URL" == *\?* ]] && separator='&'
+          response_file="$RUNNER_TEMP/render-deploy-response.json"
+          status=$(curl --silent --show-error --fail \
+            --output "$response_file" --write-out '%{http_code}' \
+            --request POST "${RENDER_DEPLOY_HOOK_URL}${separator}ref=${COMMIT_SHA}")
+          if [[ "$status" != "200" && "$status" != "202" ]]; then
+            echo "Unexpected Render deploy response: HTTP $status" >&2
+            exit 1
+          fi
+          echo "Render accepted deployment for tested commit ${COMMIT_SHA} (HTTP ${status})."
+
+      - name: Wait for deployed health and commit identity
+        if: steps.config.outputs.enabled == 'true'
+        env:
+          RENDER_PUBLIC_URL: ${{ vars.RENDER_PUBLIC_URL }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          health_file="$RUNNER_TEMP/render-health.json"
+          for attempt in $(seq 1 50); do
+            if curl --silent --show-error --fail \
+              "${RENDER_PUBLIC_URL%/}/health" --output "$health_file"; then
+              if python - "$health_file" "$COMMIT_SHA" <<'PY'
+          import json, sys
+          data = json.load(open(sys.argv[1], encoding="utf-8"))
+          model = data.get("model", {})
+          agent = data.get("agent", {})
+          ok = (
+              data.get("ready") is True
+              and model.get("ready") is True
+              and model.get("model_version") == "malware-lightgbm-20261028-v1"
+              and agent.get("ready") is True
+              and data.get("commit_sha") == sys.argv[2]
+          )
+          if ok:
+              print("Deployed health, model version, Agent readiness, and commit SHA verified.")
+              raise SystemExit(0)
+          print("Service is not ready on the expected commit yet; retrying.")
+          raise SystemExit(1)
+          PY
+              then
+                exit 0
+              fi
+            fi
+            echo "Waiting for Render to finish deploying the tested commit (attempt ${attempt}/50)."
+            sleep 12
+          done
+          echo "Render did not become healthy on the tested commit within 10 minutes." >&2
+          exit 1

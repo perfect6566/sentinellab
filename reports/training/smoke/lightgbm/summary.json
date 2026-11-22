@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "run_type": "smoke",
+  "config": {
+    "model": "lightgbm",
+    "folds": 2,
+    "seed": 20261028,
+    "smoke": true,
+    "rows": 2000,
+    "groups": 1948,
+    "row_ids_sha256": "fcf1b088e3db49e602ebc88cbd9eb40335a84ceed3fed634f72bb73e536d1b7a"
+  },
+  "config_hash": "225d8c859a3a66f6ab7e5b42e7d16ccc3b4a616d1e6b5c68214471ec86a6a4be",
+  "model": "lightgbm",
+  "display_name": "LightGBM",
+  "auc_mean": 0.9767991909402193,
+  "auc_std": 0.004025789405692537,
+  "accuracy_mean": 0.9245000000000001,
+  "accuracy_std": 0.01050000000000001,
+  "elapsed_seconds": 0.33263962499995614,
+  "fold_results": [
+    {
+      "status": "passed",
+      "config_hash": "225d8c859a3a66f6ab7e5b42e7d16ccc3b4a616d1e6b5c68214471ec86a6a4be",
+      "model": "lightgbm",
+      "fold": 1,
+      "train_rows": 1000,
+      "validation_rows": 1000,
+      "train_groups": 974,
+      "validation_groups": 974,
+      "group_overlap": 0,
+      "auc": 0.9808249803459118,
+      "accuracy": 0.935,
+      "elapsed_seconds": 0.16879400000016176,
+      "score_min": 0.022786667138507365,
+      "score_max": 0.9810584463756593
+    },
+    {
+      "status": "passed",
+      "config_hash": "225d8c859a3a66f6ab7e5b42e7d16ccc3b4a616d1e6b5c68214471ec86a6a4be",
+      "model": "lightgbm",
+      "fold": 2,
+      "train_rows": 1000,
+      "validation_rows": 1000,
+      "train_groups": 974,
+      "validation_groups": 974,
+      "group_overlap": 0,
+      "auc": 0.9727734015345267,
+      "accuracy": 0.914,
+      "elapsed_seconds": 0.16384562499979438,
+      "score_min": 0.022640062827109484,
+      "score_max": 0.9808894321310954
+    }
+  ]
+}

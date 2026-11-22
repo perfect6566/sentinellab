@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "resource_limits": {
+    "maximum_parallel_model_jobs": 1,
+    "tree_model_threads": 4,
+    "pytorch_device": "cpu"
+  },
+  "models": {
+    "logistic_regression": {
+      "search": {"C": [0.1, 1.0, 10.0], "class_weight": [null, "balanced"]}
+    },
+    "decision_tree": {
+      "search": {"max_depth": [6, 12, 24, null], "min_samples_leaf": [1, 5, 20], "class_weight": [null, "balanced"]}
+    },
+    "random_forest": {
+      "search": {"n_estimators": [200, 400], "max_depth": [12, 24, null], "min_samples_leaf": [1, 5], "max_features": ["sqrt", 0.5], "class_weight": [null, "balanced_subsample"]}
+    },
+    "pytorch_mlp": {
+      "search": {"hidden_dims": [[128, 64], [256, 128]], "learning_rate": [0.001, 0.0003], "weight_decay": [0.0, 0.0001], "batch_size": [256], "max_epochs": [20, 40]}
+    },
+    "xgboost": {
+      "search": {"n_estimators": [200, 400], "max_depth": [4, 8], "learning_rate": [0.03, 0.1], "subsample": [0.8, 1.0], "colsample_bytree": [0.8, 1.0]}
+    },
+    "lightgbm": {
+      "search": {"n_estimators": [200, 400], "num_leaves": [31, 63], "learning_rate": [0.03, 0.1], "subsample": [0.8, 1.0], "colsample_bytree": [0.8, 1.0]}
+    },
+    "catboost": {
+      "search": {"iterations": [200, 400], "depth": [6, 8], "learning_rate": [0.03, 0.1], "l2_leaf_reg": [3.0, 10.0]}
+    }
+  },
+  "tuning_policy": "Use an explicitly budgeted randomized/stepwise search on development folds only. The formal budget is selected after smoke timing; no exhaustive Cartesian grid is authorized."
+}

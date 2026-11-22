@@ -1,0 +1,74 @@
+{
+  "created_at": "2026-10-28T08:24:53.599933+00:00",
+  "random_seed": 20261028,
+  "requested_test_fraction": 0.2,
+  "preparation": {
+    "input_rows": 50181,
+    "conflicting_sha1_groups_removed": 18,
+    "conflicting_rows_removed": 54,
+    "exact_duplicate_rows_removed": 2474,
+    "eligible_rows": 47653,
+    "eligible_sha1_groups": 43393
+  },
+  "partitions": {
+    "development": {
+      "rows": 38122,
+      "groups": 34651,
+      "label_counts": {
+        "0": 16878,
+        "1": 21244
+      }
+    },
+    "test": {
+      "rows": 9531,
+      "groups": 8742,
+      "label_counts": {
+        "0": 4220,
+        "1": 5311
+      }
+    }
+  },
+  "actual_test_fraction": 0.20000839401506726,
+  "sha1_group_overlap_count": 0,
+  "sealed": true,
+  "source_path": "data/raw/brazilian-malware.csv",
+  "source_sha256": "d13e54cf1970ffedbf1043196c135da3187c90a82e397f681d843ed320249242",
+  "source_columns": [
+    "BaseOfCode",
+    "BaseOfData",
+    "Characteristics",
+    "DllCharacteristics",
+    "Entropy",
+    "FileAlignment",
+    "FirstSeenDate",
+    "Identify",
+    "ImageBase",
+    "ImportedDlls",
+    "ImportedSymbols",
+    "Label",
+    "Machine",
+    "Magic",
+    "NumberOfRvaAndSizes",
+    "NumberOfSections",
+    "NumberOfSymbols",
+    "PE_TYPE",
+    "PointerToSymbolTable",
+    "SHA1",
+    "Size",
+    "SizeOfCode",
+    "SizeOfHeaders",
+    "SizeOfImage",
+    "SizeOfInitializedData",
+    "SizeOfOptionalHeader",
+    "SizeOfUninitializedData",
+    "TimeDateStamp"
+  ],
+  "manifest_path": "data/splits/holdout-manifest.csv",
+  "manifest_sha256": "fa843af3135bc656d2663a3012ea3d7e4148a676f688f330106a5659e7655f51",
+  "project_config_path": "config/project.json",
+  "project_config_sha256": "0f2a8510d3968222f36eda19e765c43a777eab5b394d7497ecb675ae0d5e806d",
+  "model_schema_path": "data/metadata/model-schema.json",
+  "model_schema_sha256": "07eb842f3d0adffd0dbc88fb7f0557239a869a9601df121eb95810fd13877a29",
+  "conflicting_sha1_ids_path": "not persisted in tracked reports",
+  "conflicting_sha1_count": 18
+}

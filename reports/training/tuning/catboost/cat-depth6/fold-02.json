@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "config_hash": "1bdbe8c4627c51f37e6fe76ee4534dec097fd88d4692a890df7dc90ffc4e46bf",
+  "model": "catboost",
+  "fold": 2,
+  "train_rows": 34309,
+  "validation_rows": 3813,
+  "train_groups": 31190,
+  "validation_groups": 3461,
+  "group_overlap": 0,
+  "auc": 0.9956957067187066,
+  "accuracy": 0.979805927091529,
+  "elapsed_seconds": 8.33830237500024,
+  "score_min": 0.0009669971896241053,
+  "score_max": 0.9982495611238381
+}

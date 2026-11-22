@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "model": "lightgbm",
+  "reference_candidate": "lgbm-leaves31",
+  "reference_description": "256 hash features for each of ImportedDlls and ImportedSymbols",
+  "base_classifier_params": {
+    "classifier__n_estimators": 250,
+    "classifier__num_leaves": 31,
+    "classifier__learning_rate": 0.05,
+    "classifier__subsample": 0.8,
+    "classifier__colsample_bytree": 0.8
+  },
+  "candidates": [
+    {
+      "id": "lgbm-text128",
+      "description": "128 hash features per import-list field",
+      "params": {
+        "preprocessing__text_ImportedDlls__n_features": 128,
+        "preprocessing__text_ImportedSymbols__n_features": 128
+      }
+    },
+    {
+      "id": "lgbm-no-text",
+      "description": "Drop both import-list text fields",
+      "params": {
+        "preprocessing__text_ImportedDlls": "drop",
+        "preprocessing__text_ImportedSymbols": "drop"
+      }
+    }
+  ]
+}

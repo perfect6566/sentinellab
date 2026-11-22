@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "target": {
+    "column": "Label",
+    "mapping": {"0": "goodware", "1": "malware"},
+    "model_input": false
+  },
+  "group_identifier": {
+    "column": "SHA1",
+    "purpose": "stable row identity and leakage-safe grouping",
+    "model_input": false
+  },
+  "excluded_metadata": [
+    {
+      "column": "FirstSeenDate",
+      "reason": "collection-time metadata with a material target-leakage risk",
+      "model_input": false
+    }
+  ],
+  "candidate_model_inputs": [
+    "BaseOfCode",
+    "BaseOfData",
+    "Characteristics",
+    "DllCharacteristics",
+    "Entropy",
+    "FileAlignment",
+    "Identify",
+    "ImageBase",
+    "ImportedDlls",
+    "ImportedSymbols",
+    "Machine",
+    "Magic",
+    "NumberOfRvaAndSizes",
+    "NumberOfSections",
+    "NumberOfSymbols",
+    "PE_TYPE",
+    "PointerToSymbolTable",
+    "Size",
+    "SizeOfCode",
+    "SizeOfHeaders",
+    "SizeOfImage",
+    "SizeOfInitializedData",
+    "SizeOfOptionalHeader",
+    "SizeOfUninitializedData",
+    "TimeDateStamp"
+  ],
+  "fold_local_review": {
+    "constant_in_raw_audit": ["Magic", "PE_TYPE", "SizeOfOptionalHeader"],
+    "text_or_categorical": ["Identify", "ImportedDlls", "ImportedSymbols"],
+    "rule": "Any learned removal, vocabulary, imputation or encoding is fitted only on the current training fold."
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "run_type": "smoke",
+  "config": {
+    "model": "pytorch_mlp",
+    "folds": 2,
+    "seed": 20261028,
+    "smoke": true,
+    "rows": 2000,
+    "groups": 1948,
+    "row_ids_sha256": "fcf1b088e3db49e602ebc88cbd9eb40335a84ceed3fed634f72bb73e536d1b7a"
+  },
+  "config_hash": "c608da6f15f259124216eaccd45fb74f8d7f1b7793932e9a9ee9e38ead4a1cce",
+  "model": "pytorch_mlp",
+  "display_name": "PyTorch MLP",
+  "auc_mean": 0.7898223866806944,
+  "auc_std": 0.020342319201658687,
+  "accuracy_mean": 0.7170000000000001,
+  "accuracy_std": 0.069,
+  "elapsed_seconds": 0.6433557080003993,
+  "fold_results": [
+    {
+      "status": "passed",
+      "config_hash": "c608da6f15f259124216eaccd45fb74f8d7f1b7793932e9a9ee9e38ead4a1cce",
+      "model": "pytorch_mlp",
+      "fold": 1,
+      "train_rows": 1000,
+      "validation_rows": 1000,
+      "train_groups": 974,
+      "validation_groups": 974,
+      "group_overlap": 0,
+      "auc": 0.7694800674790356,
+      "accuracy": 0.786,
+      "elapsed_seconds": 0.5308283750000555,
+      "score_min": 0.0,
+      "score_max": 1.0
+    },
+    {
+      "status": "passed",
+      "config_hash": "c608da6f15f259124216eaccd45fb74f8d7f1b7793932e9a9ee9e38ead4a1cce",
+      "model": "pytorch_mlp",
+      "fold": 2,
+      "train_rows": 1000,
+      "validation_rows": 1000,
+      "train_groups": 974,
+      "validation_groups": 974,
+      "group_overlap": 0,
+      "auc": 0.810164705882353,
+      "accuracy": 0.648,
+      "elapsed_seconds": 0.11252733300034379,
+      "score_min": 0.0,
+      "score_max": 1.0
+    }
+  ]
+}

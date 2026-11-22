@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "model_version": "malware-lightgbm-20261028-v1",
+  "artifact_path": "artifacts/production-model.joblib",
+  "artifact_sha256": "2e0dd9f4f57554efca6d0dcdc0af5af79f9a7abfc383f70569e1662afb6d4791",
+  "artifact_byte_size": 400354,
+  "production_config_path": "config/production.json",
+  "production_config_sha256": "1ffc985b1722a65e7944e5d8af91295663403031082dc28b4a197cdb045e4cac",
+  "model_schema_path": "data/metadata/model-schema.json",
+  "model_schema_sha256": "07eb842f3d0adffd0dbc88fb7f0557239a869a9601df121eb95810fd13877a29",
+  "source_dataset_sha256": "d13e54cf1970ffedbf1043196c135da3187c90a82e397f681d843ed320249242",
+  "split_manifest_sha256": "fa843af3135bc656d2663a3012ea3d7e4148a676f688f330106a5659e7655f51",
+  "threshold": 0.5,
+  "class_mapping": {
+    "0": "goodware",
+    "1": "malware"
+  },
+  "dataset_metadata": {
+    "source_rows": 50181,
+    "eligible_rows": 47653,
+    "training_rows_fitted": 38122,
+    "training_groups": 34651,
+    "test_rows": 9531,
+    "test_groups": 8742,
+    "training_fraction": 0.8,
+    "test_fraction": 0.2,
+    "test_label_counts": {
+      "goodware": 4220,
+      "malware": 5311
+    },
+    "split_method": "Stratified 80/20 split grouped by SHA1 file identity",
+    "cross_validation": {
+      "folds": 10,
+      "scope": "development partition only",
+      "grouped_by": "SHA1"
+    },
+    "holdout_evaluation": {
+      "type": "one-time untouched final test set",
+      "auc": 0.9952955325663181,
+      "accuracy": 0.9710418633931381
+    },
+    "interpretation": "Uploaded labeled CSV evaluations are separate from this official holdout. The built-in 20-row labeled workflow fixture comes from the development partition and is not an unseen-data performance estimate."
+  },
+  "holdout_report_path": "reports/holdout-evaluation.json",
+  "holdout_report_sha256": "73a83ac93bcd4fc44ef188fad789c5a9fdbde9234667a5d1fe3d8ef93de3255e",
+  "reload_max_probability_difference": 0.0,
+  "versions": {
+    "python-dotenv": "1.2.4",
+    "joblib": "1.6.0",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.9.1",
+    "lightgbm": "4.7.0"
+  },
+  "python_version": "3.12.13",
+  "warning": "Load only this trusted, hash-verified joblib artifact. Joblib is unsafe for untrusted files."
+}

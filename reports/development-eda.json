@@ -1,0 +1,451 @@
+{
+  "created_at": "2026-10-28T08:25:28.096448+00:00",
+  "source_path": "data/raw/brazilian-malware.csv",
+  "source_sha256": "d13e54cf1970ffedbf1043196c135da3187c90a82e397f681d843ed320249242",
+  "manifest_path": "data/splits/holdout-manifest.csv",
+  "manifest_sha256": "fa843af3135bc656d2663a3012ea3d7e4148a676f688f330106a5659e7655f51",
+  "manifest_partition_counts": {
+    "test": 9531,
+    "development": 38122
+  },
+  "scope": "development partition only; final test features were not profiled",
+  "development_rows_profiled": 38122,
+  "test_rows_profiled": 0,
+  "label_counts": {
+    "0": 16878,
+    "1": 21244
+  },
+  "label_fractions": {
+    "0": 0.4427364776244688,
+    "1": 0.5572635223755312
+  },
+  "numeric": {
+    "BaseOfCode": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 614,
+      "min": 0.0,
+      "q1": 4096.0,
+      "median": 4096.0,
+      "q3": 4096.0,
+      "max": 228319232.0,
+      "mean": 179191.50435444101,
+      "standard_deviation": 4039896.668748232,
+      "zero_count": 10,
+      "iqr_outlier_count": 7628,
+      "constant": false
+    },
+    "BaseOfData": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 1541,
+      "min": 0.0,
+      "q1": 57344.0,
+      "median": 307200.0,
+      "q3": 765952.0,
+      "max": 941510656.0,
+      "mean": 866906.5705891611,
+      "standard_deviation": 6573861.969162073,
+      "zero_count": 115,
+      "iqr_outlier_count": 4145,
+      "constant": false
+    },
+    "Characteristics": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 66,
+      "min": 2.0,
+      "q1": 291.0,
+      "median": 8450.0,
+      "q3": 33167.0,
+      "max": 44430.0,
+      "mean": 18658.260217197418,
+      "standard_deviation": 16491.17768267924,
+      "zero_count": 0,
+      "iqr_outlier_count": 0,
+      "constant": false
+    },
+    "DllCharacteristics": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 56,
+      "min": 0.0,
+      "q1": 0.0,
+      "median": 64.0,
+      "q3": 32768.0,
+      "max": 60708.0,
+      "mean": 10391.483972509312,
+      "standard_deviation": 15138.704581212258,
+      "zero_count": 15464,
+      "iqr_outlier_count": 0,
+      "constant": false
+    },
+    "Entropy": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 34651,
+      "min": 0.011173829435761092,
+      "q1": 6.184538589177429,
+      "median": 6.607074308366656,
+      "q3": 7.848619807176141,
+      "max": 7.999999779821501,
+      "mean": 6.679842881063347,
+      "standard_deviation": 1.141784714877223,
+      "zero_count": 0,
+      "iqr_outlier_count": 647,
+      "constant": false
+    },
+    "FileAlignment": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 7,
+      "min": 32.0,
+      "q1": 512.0,
+      "median": 512.0,
+      "q3": 512.0,
+      "max": 8192.0,
+      "mean": 829.9266565237921,
+      "standard_deviation": 1022.0872167560847,
+      "zero_count": 0,
+      "iqr_outlier_count": 3543,
+      "constant": false
+    },
+    "ImageBase": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 3276,
+      "min": 65536.0,
+      "q1": 4194304.0,
+      "median": 4194304.0,
+      "q3": 146866176.0,
+      "max": 3212836864.0,
+      "mean": 171852770.5064792,
+      "standard_deviation": 416240130.3597601,
+      "zero_count": 0,
+      "iqr_outlier_count": 3447,
+      "constant": false
+    },
+    "Machine": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 3,
+      "min": 332.0,
+      "q1": 332.0,
+      "median": 332.0,
+      "q3": 332.0,
+      "max": 452.0,
+      "mean": 332.08179004249513,
+      "standard_deviation": 3.1308025867656806,
+      "zero_count": 0,
+      "iqr_outlier_count": 26,
+      "constant": false
+    },
+    "Magic": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 1,
+      "min": 267.0,
+      "q1": 267.0,
+      "median": 267.0,
+      "q3": 267.0,
+      "max": 267.0,
+      "mean": 267.0,
+      "standard_deviation": 0.0,
+      "zero_count": 0,
+      "iqr_outlier_count": 0,
+      "constant": true
+    },
+    "NumberOfRvaAndSizes": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 26,
+      "min": 11.0,
+      "q1": 16.0,
+      "median": 16.0,
+      "q3": 16.0,
+      "max": 2033305343.0,
+      "mean": 547527.6949792771,
+      "standard_deviation": 27152260.18999491,
+      "zero_count": 0,
+      "iqr_outlier_count": 36,
+      "constant": false
+    },
+    "NumberOfSections": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 21,
+      "min": 1.0,
+      "q1": 4.0,
+      "median": 5.0,
+      "q3": 8.0,
+      "max": 28.0,
+      "mean": 5.701327317559414,
+      "standard_deviation": 2.492764372208927,
+      "zero_count": 0,
+      "iqr_outlier_count": 92,
+      "constant": false
+    },
+    "NumberOfSymbols": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 66,
+      "min": 0.0,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 0.0,
+      "max": 4143872906.0,
+      "mean": 181252.2416452442,
+      "standard_deviation": 23834223.68195959,
+      "zero_count": 37972,
+      "iqr_outlier_count": 150,
+      "constant": false
+    },
+    "PE_TYPE": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 1,
+      "min": 267.0,
+      "q1": 267.0,
+      "median": 267.0,
+      "q3": 267.0,
+      "max": 267.0,
+      "mean": 267.0,
+      "standard_deviation": 0.0,
+      "zero_count": 0,
+      "iqr_outlier_count": 0,
+      "constant": true
+    },
+    "PointerToSymbolTable": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 75,
+      "min": 0.0,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 0.0,
+      "max": 2425393296.0,
+      "mean": 660646.0175489219,
+      "standard_deviation": 36852005.0762913,
+      "zero_count": 37954,
+      "iqr_outlier_count": 168,
+      "constant": false
+    },
+    "Size": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 15482,
+      "min": 2560.0,
+      "q1": 135168.0,
+      "median": 562176.0,
+      "q3": 1894460.75,
+      "max": 3986104226.0,
+      "mean": 7020060.171213472,
+      "standard_deviation": 55947559.53866853,
+      "zero_count": 0,
+      "iqr_outlier_count": 5157,
+      "constant": false
+    },
+    "SizeOfCode": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 4970,
+      "min": 0.0,
+      "q1": 49152.0,
+      "median": 244224.0,
+      "q3": 667648.0,
+      "max": 97869824.0,
+      "mean": 670551.6521431195,
+      "standard_deviation": 1633943.331243416,
+      "zero_count": 120,
+      "iqr_outlier_count": 4079,
+      "constant": false
+    },
+    "SizeOfHeaders": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 15,
+      "min": 512.0,
+      "q1": 1024.0,
+      "median": 1024.0,
+      "q3": 1024.0,
+      "max": 50176.0,
+      "mean": 1582.4042809926027,
+      "standard_deviation": 1262.5690987268363,
+      "zero_count": 0,
+      "iqr_outlier_count": 10768,
+      "constant": false
+    },
+    "SizeOfImage": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 3090,
+      "min": 3456.0,
+      "q1": 131072.0,
+      "median": 491520.0,
+      "q3": 1404928.0,
+      "max": 1473761280.0,
+      "mean": 2419821.8155920464,
+      "standard_deviation": 17391552.13419113,
+      "zero_count": 0,
+      "iqr_outlier_count": 4653,
+      "constant": false
+    },
+    "SizeOfInitializedData": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 4178,
+      "min": 0.0,
+      "q1": 12288.0,
+      "median": 74752.0,
+      "q3": 279424.0,
+      "max": 4294803968.0,
+      "mean": 1446613.7397041079,
+      "standard_deviation": 39438262.412812226,
+      "zero_count": 117,
+      "iqr_outlier_count": 5030,
+      "constant": false
+    },
+    "SizeOfOptionalHeader": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 1,
+      "min": 224.0,
+      "q1": 224.0,
+      "median": 224.0,
+      "q3": 224.0,
+      "max": 224.0,
+      "mean": 224.0,
+      "standard_deviation": 0.0,
+      "zero_count": 0,
+      "iqr_outlier_count": 0,
+      "constant": true
+    },
+    "SizeOfUninitializedData": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 681,
+      "min": 0.0,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 0.0,
+      "max": 228315136.0,
+      "mean": 180609.42363989298,
+      "standard_deviation": 4050199.3433305803,
+      "zero_count": 33664,
+      "iqr_outlier_count": 4458,
+      "constant": false
+    },
+    "TimeDateStamp": {
+      "missing_count": 0,
+      "non_finite_or_parse_error_count": 0,
+      "valid_count": 38122,
+      "unique_count": 19989,
+      "min": 0.0,
+      "q1": 1198209419.0,
+      "median": 1366993954.0,
+      "q3": 1422593486.0,
+      "max": 3964004123.0,
+      "mean": 1225265559.605687,
+      "standard_deviation": 285006005.6756912,
+      "zero_count": 32,
+      "iqr_outlier_count": 7997,
+      "constant": false
+    }
+  },
+  "categorical": {
+    "Identify": {
+      "missing_count": 11064,
+      "unique_count_including_missing": 228,
+      "top_values": [
+        {
+          "value": "<MISSING>",
+          "count": 11064
+        },
+        {
+          "value": "borland delphi 3.0 (???) borland delphi 4.0 borland delphi v3.0",
+          "count": 3280
+        },
+        {
+          "value": "microsoft visual c++ 8 vc8 -> microsoft corporation microsoft visual c++ v8.0 microsoft visual c++ 8",
+          "count": 3224
+        },
+        {
+          "value": "microsoft visual c# / basic .net microsoft visual studio .net .net executable microsoft visual c# v7.0 / basic .net",
+          "count": 2726
+        },
+        {
+          "value": "borland delphi 3.0 (???) borland delphi 4.0",
+          "count": 2542
+        },
+        {
+          "value": "microsoft visual c# / basic .net",
+          "count": 1403
+        },
+        {
+          "value": "borland delphi 3.0 (???) borland delphi 4.0 borland delphi v3.0 borland delphi v6.0 - v7.0 borland delphi v3.0 borland d",
+          "count": 1275
+        },
+        {
+          "value": "acprotect 1.3x - 1.4x dll -> risco software inc. upx v0.89.6 - v1.02 / v1.05 - v1.22 upx v0.89.6 - v1.02 / v1.05 - v1.22",
+          "count": 1149
+        },
+        {
+          "value": "borland delphi 3.0 (???) borland delphi 4.0 borland delphi v3.0 borland delphi v6.0 - v7.0 borland delphi v6.0 - v7.0 bo",
+          "count": 991
+        },
+        {
+          "value": "nullsoft pimp stub -> sfx",
+          "count": 905
+        }
+      ]
+    }
+  },
+  "text": {
+    "ImportedDlls": {
+      "missing_count": 0,
+      "unique_count": 9394,
+      "character_length_min": 8,
+      "character_length_median": 116.0,
+      "character_length_max": 2924,
+      "token_count_min": 1,
+      "token_count_median": 9.0,
+      "token_count_max": 82
+    },
+    "ImportedSymbols": {
+      "missing_count": 0,
+      "unique_count": 15769,
+      "character_length_min": 5,
+      "character_length_median": 1741.0,
+      "character_length_max": 103632,
+      "token_count_min": 1,
+      "token_count_median": 111.0,
+      "token_count_max": 2447
+    }
+  },
+  "constant_numeric_features": [
+    "Magic",
+    "PE_TYPE",
+    "SizeOfOptionalHeader"
+  ]
+}

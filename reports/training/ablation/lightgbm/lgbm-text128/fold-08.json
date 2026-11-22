@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "config_hash": "7293069444b232484d84bebc5f52ee6569514af10336917cdd7c9ea03c571019",
+  "model": "lightgbm",
+  "fold": 8,
+  "train_rows": 34310,
+  "validation_rows": 3812,
+  "train_groups": 31184,
+  "validation_groups": 3467,
+  "group_overlap": 0,
+  "auc": 0.9974738310261865,
+  "accuracy": 0.9811122770199371,
+  "elapsed_seconds": 3.2379055419996803,
+  "score_min": 4.3642662176699934e-05,
+  "score_max": 0.9999639916966554
+}

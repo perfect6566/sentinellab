@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "run_type": "smoke",
+  "config": {
+    "model": "catboost",
+    "folds": 2,
+    "seed": 20261028,
+    "smoke": true,
+    "rows": 2000,
+    "groups": 1948,
+    "row_ids_sha256": "fcf1b088e3db49e602ebc88cbd9eb40335a84ceed3fed634f72bb73e536d1b7a"
+  },
+  "config_hash": "e48d61c4c8656493e6ae65557a2a85b64c85ccae244b566bd8d82f2633313a86",
+  "model": "catboost",
+  "display_name": "CatBoost",
+  "auc_mean": 0.9792328389693483,
+  "auc_std": 0.004542301884949418,
+  "accuracy_mean": 0.9275,
+  "accuracy_std": 0.009500000000000008,
+  "elapsed_seconds": 0.444412791999639,
+  "fold_results": [
+    {
+      "status": "passed",
+      "config_hash": "e48d61c4c8656493e6ae65557a2a85b64c85ccae244b566bd8d82f2633313a86",
+      "model": "catboost",
+      "fold": 1,
+      "train_rows": 1000,
+      "validation_rows": 1000,
+      "train_groups": 974,
+      "validation_groups": 974,
+      "group_overlap": 0,
+      "auc": 0.9837751408542977,
+      "accuracy": 0.937,
+      "elapsed_seconds": 0.2526966249997713,
+      "score_min": 0.011166061138705214,
+      "score_max": 0.9815982918688692
+    },
+    {
+      "status": "passed",
+      "config_hash": "e48d61c4c8656493e6ae65557a2a85b64c85ccae244b566bd8d82f2633313a86",
+      "model": "catboost",
+      "fold": 2,
+      "train_rows": 1000,
+      "validation_rows": 1000,
+      "train_groups": 974,
+      "validation_groups": 974,
+      "group_overlap": 0,
+      "auc": 0.9746905370843989,
+      "accuracy": 0.918,
+      "elapsed_seconds": 0.1917161669998677,
+      "score_min": 0.008976135829856876,
+      "score_max": 0.9919641531266342
+    }
+  ]
+}

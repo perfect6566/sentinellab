@@ -1,0 +1,707 @@
+{
+  "created_at_utc": "2026-11-22T10:09:54.847082+00:00",
+  "scope": "local deployment of the release code via direct API; live DeepSeek provider",
+  "base_url": "http://127.0.0.1:5001",
+  "model_version": "malware-lightgbm-20261028-v1",
+  "agent": {
+    "mode": "deepseek",
+    "model": "deepseek-chat",
+    "provider": "deepseek",
+    "ready": true
+  },
+  "passed": 9,
+  "required": 9,
+  "cases": [
+    {
+      "name": "AE-01 single prediction",
+      "conversation_id": "5e4a79d4-d42e-4e3c-b68c-f9f83f725192",
+      "request": {
+        "message": "Use predict_single for this complete feature record: {\"record\": {\"BaseOfCode\": 4096, \"BaseOfData\": 2072576, \"Characteristics\": 33167, \"DllCharacteristics\": 0, \"Entropy\": 7.987439212410243, \"FileAlignment\": 512, \"Identify\": \"\", \"ImageBase\": 65536, \"ImportedDlls\": \"kernel32.dll\", \"ImportedSymbols\": \"sleep\", \"Machine\": 332, \"Magic\": 267, \"NumberOfRvaAndSizes\": 16, \"NumberOfSections\": 6, \"NumberOfSymbols\": 0, \"PE_TYPE\": 267, \"PointerToSymbolTable\": 0, \"Size\": 8643584, \"SizeOfCode\": 2063872, \"SizeOfHeaders\": 1024, \"SizeOfImage\": 11616256, \"SizeOfInitializedData\": 7505408, \"SizeOfOptionalHeader\": 224, \"SizeOfUninitializedData\": 0, \"TimeDateStamp\": 1432757946}}",
+        "condition": null,
+        "context_result_id": null
+      },
+      "referenced_result": null,
+      "http_status": 200,
+      "expected_tools": [
+        "predict_single"
+      ],
+      "actual_tools": [
+        "predict_single"
+      ],
+      "expected_success": true,
+      "ok": true,
+      "behavior_ok": true,
+      "checks": {
+        "tools": true,
+        "success": true,
+        "hasPrediction": true
+      },
+      "error_code": null,
+      "final_answer": "The model was run on your record:\n\n- Predicted label: 1 (`malware`)\n- malware_score: 0.9978823131027981\n- Decision threshold: 0.5\n- Model version: malware-lightgbm-20261028-v1\n- Validated feature count: 25\n\nNotes:\n- malware_score is an uncalibrated model score/probability, not a guarantee.\n- This prediction is not proof that the software is malicious or safe to run; it is a single-record model output and should be corroborated by other analysis.\n- No feature-level explanation is available, so I can't say which features drove this result.\n- These numbers come from this single-record prediction only; they are unrelated to the official hold-out statistics of the production model.",
+      "activities": [
+        {
+          "arguments": {
+            "record": "<25 PE features>"
+          },
+          "model_version": "malware-lightgbm-20261028-v1",
+          "predicted_label": 1,
+          "result_id": "8292ab52-522b-4ca0-8f20-267b4838759a",
+          "status": "succeeded",
+          "tool": "predict_single",
+          "validated_feature_count": 25
+        }
+      ],
+      "result_ids": [
+        "8292ab52-522b-4ca0-8f20-267b4838759a"
+      ],
+      "structured_results": [
+        {
+          "data": {
+            "class_name": "malware",
+            "malware_score": 0.9978823131027981,
+            "model_version": "malware-lightgbm-20261028-v1",
+            "predicted_label": 1,
+            "threshold": 0.5,
+            "validated_feature_count": 25
+          },
+          "result_id": "8292ab52-522b-4ca0-8f20-267b4838759a",
+          "tool": "predict_single"
+        }
+      ],
+      "turns": 2,
+      "tool_calls": 1
+    },
+    {
+      "name": "AE-02 batch prediction",
+      "conversation_id": "a3a0386b-bbef-4a50-ac3f-a318a7f08290",
+      "request": {
+        "message": "Run batch prediction for file reference 510d9cc3-2e51-44aa-bd42-71e9c6a43709.",
+        "condition": null,
+        "context_result_id": null
+      },
+      "referenced_result": null,
+      "http_status": 200,
+      "expected_tools": [
+        "predict_batch"
+      ],
+      "actual_tools": [
+        "predict_batch"
+      ],
+      "expected_success": true,
+      "ok": true,
+      "behavior_ok": true,
+      "checks": {
+        "tools": true,
+        "success": true,
+        "fiveRows": true
+      },
+      "error_code": null,
+      "final_answer": "Batch prediction completed successfully for file reference `510d9cc3-2e51-44aa-bd42-71e9c6a43709`.\n\n**Summary of this uploaded CSV (from the tool result)**\n- Input rows: 5\n- Valid rows: 5\n- Invalid rows: 0\n- Predicted goodware: 5\n- Predicted malware: 0\n- Threshold applied: 0.5\n- Model version: malware-lightgbm-20261028-v1\n- Result file reference: a4ddd262-82b6-47bd-bb0c-e01ec87ade82\n\n**Per-row predictions**\n\n| Row | Row ID | Predicted class | malware_score |\n|---|---|---|---|\n| 1 | sample-1 | goodware | 0.10162516004875878 |\n| 2 | sample-2 | goodware | 0.06017918912310827 |\n| 3 | sample-3 | goodware | 0.08794573248829168 |\n| 4 | sample-4 | goodware | 0.004972218024667344 |\n| 5 | sample-5 | goodware | 0.17922433405100852 |\n\nEvery row scored below the result's threshold of 0.5, so all were labeled goodware. Note that the malware_score values are uncalibrated scores, so they should not be read as calibrated probabilities.\n\nThese are predictions only; a goodware label is not proof that any of these files is safe to run. This file appears to contain no true Label column, so these are predictions rather than measured performance — I did not compute or report any accuracy or other metrics from this file, and the official hold-out statistics do not apply to it. Also, since no explanation tool exists, I can't attribute these scores to specific features.\n\nIf you have a labeled version of this data and want performance metrics, I can run the labeled evaluation on it instead.",
+      "activities": [
+        {
+          "arguments": {
+            "file_reference": "510d9cc3-2e51-44aa-bd42-71e9c6a43709"
+          },
+          "goodware_count": 5,
+          "input_rows": 5,
+          "invalid_rows": 0,
+          "malware_count": 0,
+          "model_version": "malware-lightgbm-20261028-v1",
+          "result_id": "d98b5e65-bcea-4c33-af8f-5c70d8a74c5c",
+          "status": "succeeded",
+          "tool": "predict_batch",
+          "valid_rows": 5
+        }
+      ],
+      "result_ids": [
+        "d98b5e65-bcea-4c33-af8f-5c70d8a74c5c"
+      ],
+      "structured_results": [
+        {
+          "data": {
+            "model_version": "malware-lightgbm-20261028-v1",
+            "result_file_reference": "a4ddd262-82b6-47bd-bb0c-e01ec87ade82",
+            "rows": [
+              {
+                "class_name": "goodware",
+                "input_row": 1,
+                "malware_score": 0.10162516004875878,
+                "model_version": "malware-lightgbm-20261028-v1",
+                "predicted_label": 0,
+                "row_id": "sample-1",
+                "status": "predicted",
+                "threshold": 0.5
+              },
+              {
+                "class_name": "goodware",
+                "input_row": 2,
+                "malware_score": 0.06017918912310827,
+                "model_version": "malware-lightgbm-20261028-v1",
+                "predicted_label": 0,
+                "row_id": "sample-2",
+                "status": "predicted",
+                "threshold": 0.5
+              },
+              {
+                "class_name": "goodware",
+                "input_row": 3,
+                "malware_score": 0.08794573248829168,
+                "model_version": "malware-lightgbm-20261028-v1",
+                "predicted_label": 0,
+                "row_id": "sample-3",
+                "status": "predicted",
+                "threshold": 0.5
+              },
+              {
+                "class_name": "goodware",
+                "input_row": 4,
+                "malware_score": 0.004972218024667344,
+                "model_version": "malware-lightgbm-20261028-v1",
+                "predicted_label": 0,
+                "row_id": "sample-4",
+                "status": "predicted",
+                "threshold": 0.5
+              },
+              {
+                "class_name": "goodware",
+                "input_row": 5,
+                "malware_score": 0.17922433405100852,
+                "model_version": "malware-lightgbm-20261028-v1",
+                "predicted_label": 0,
+                "row_id": "sample-5",
+                "status": "predicted",
+                "threshold": 0.5
+              }
+            ],
+            "rows_truncated": false,
+            "summary": {
+              "goodware_count": 5,
+              "input_rows": 5,
+              "invalid_rows": 0,
+              "malware_count": 0,
+              "valid_rows": 5
+            }
+          },
+          "result_id": "d98b5e65-bcea-4c33-af8f-5c70d8a74c5c",
+          "tool": "predict_batch"
+        }
+      ],
+      "turns": 2,
+      "tool_calls": 1
+    },
+    {
+      "name": "AE-03 threshold met",
+      "conversation_id": "5e60c4ea-1fe0-46af-bf9f-270e3191baa8",
+      "request": {
+        "message": "Evaluate labeled file f450c1dd-f726-4a8d-a1e6-24c588f8d792. If accuracy is at least 98%, predict this record: {\"record\": {\"BaseOfCode\": 4096, \"BaseOfData\": 2072576, \"Characteristics\": 33167, \"DllCharacteristics\": 0, \"Entropy\": 7.987439212410243, \"FileAlignment\": 512, \"Identify\": \"\", \"ImageBase\": 65536, \"ImportedDlls\": \"kernel32.dll\", \"ImportedSymbols\": \"sleep\", \"Machine\": 332, \"Magic\": 267, \"NumberOfRvaAndSizes\": 16, \"NumberOfSections\": 6, \"NumberOfSymbols\": 0, \"PE_TYPE\": 267, \"PointerToSymbolTable\": 0, \"Size\": 8643584, \"SizeOfCode\": 2063872, \"SizeOfHeaders\": 1024, \"SizeOfImage\": 11616256, \"SizeOfInitializedData\": 7505408, \"SizeOfOptionalHeader\": 224, \"SizeOfUninitializedData\": 0, \"TimeDateStamp\": 1432757946}}",
+        "condition": {
+          "minimum_accuracy": 98,
+          "evaluation_file_reference": "f450c1dd-f726-4a8d-a1e6-24c588f8d792"
+        },
+        "context_result_id": null
+      },
+      "referenced_result": null,
+      "http_status": 200,
+      "expected_tools": [
+        "evaluate_labeled",
+        "predict_single"
+      ],
+      "actual_tools": [
+        "evaluate_labeled",
+        "predict_single"
+      ],
+      "expected_success": true,
+      "ok": true,
+      "behavior_ok": true,
+      "checks": {
+        "tools": true,
+        "success": true,
+        "accuracyOne": true
+      },
+      "error_code": null,
+      "final_answer": "## Evaluation of the uploaded labeled CSV\n\nFile: `labeled-sample.csv` (reference `f450c1dd-f726-4a8d-a1e6-24c588f8d792`)\n\nMetrics calculated on this uploaded file:\n- Sample count: 20\n- True class counts: 10 goodware, 10 malware\n- Accuracy: 1.0\n- AUC: 1.0\n- Threshold: 0.5\n- Confusion matrix (rows = true labels, columns = predicted labels): [[10, 0], [0, 10]]\n- True negatives: 10, false positives: 0, false negatives: 0, true positives: 10\n- Model version: `malware-lightgbm-20261028-v1`\n\nImportant caveat from the tool result: this is the built-in workflow fixture, sampled from the development partition used to fit the production model, so its metrics are not a valid estimate of performance on unseen files.\n\nFor contrast, the trusted official hold-out statistics for the production model (not metrics for this uploaded CSV) are AUC 0.9952955325663181 and accuracy 0.9710418633931381 on 9531 rows.\n\nThe condition was \"accuracy at least 98%,\" and the uploaded file's accuracy is 1.0, so the condition is met and the prediction was run.\n\n## Prediction for the supplied record\n\n- Predicted label: 1\n- Class name: malware\n- malware_score: 0.9978823131027981\n- Threshold: 0.5\n- Model version: `malware-lightgbm-20261028-v1`\n- Validated feature count: 25\n\nThe model assigned this record a malware score above the threshold, so it is classified as malware. A prediction of malware is not proof about how the software would behave, and no feature-level explanations are available from these tools, so I cannot say which characteristics drove the result.",
+      "activities": [
+        {
+          "accuracy": 1.0,
+          "arguments": {
+            "file_reference": "f450c1dd-f726-4a8d-a1e6-24c588f8d792"
+          },
+          "auc": 1.0,
+          "minimum_accuracy": 0.98,
+          "model_version": "malware-lightgbm-20261028-v1",
+          "result_id": "323324a6-0351-4ccd-a3f2-efe07bd1e5df",
+          "sample_count": 20,
+          "status": "succeeded",
+          "tool": "evaluate_labeled"
+        },
+        {
+          "arguments": {
+            "record": "<25 PE features>"
+          },
+          "model_version": "malware-lightgbm-20261028-v1",
+          "predicted_label": 1,
+          "result_id": "02f384c1-cf84-4921-aa8e-e039f1b4a5be",
+          "status": "succeeded",
+          "tool": "predict_single",
+          "validated_feature_count": 25
+        }
+      ],
+      "result_ids": [
+        "323324a6-0351-4ccd-a3f2-efe07bd1e5df",
+        "02f384c1-cf84-4921-aa8e-e039f1b4a5be"
+      ],
+      "structured_results": [
+        {
+          "data": {
+            "accuracy": 1.0,
+            "auc": 1.0,
+            "auc_reason": null,
+            "class_mapping": {
+              "0": "goodware",
+              "1": "malware"
+            },
+            "confusion_matrix": {
+              "columns": "predicted labels",
+              "fn": 0,
+              "fp": 0,
+              "label_order": [
+                0,
+                1
+              ],
+              "matrix": [
+                [
+                  10,
+                  0
+                ],
+                [
+                  0,
+                  10
+                ]
+              ],
+              "rows": "true labels",
+              "tn": 10,
+              "tp": 10
+            },
+            "file_name": "labeled-sample.csv",
+            "file_reference": "f450c1dd-f726-4a8d-a1e6-24c588f8d792",
+            "interpretation_note": "This is the built-in workflow fixture, sampled from the development partition used to fit the production model; its metrics are not a valid estimate of performance on unseen files.",
+            "model_version": "malware-lightgbm-20261028-v1",
+            "sample_count": 20,
+            "threshold": 0.5,
+            "true_class_counts": {
+              "0": 10,
+              "1": 10
+            }
+          },
+          "result_id": "323324a6-0351-4ccd-a3f2-efe07bd1e5df",
+          "tool": "evaluate_labeled"
+        },
+        {
+          "data": {
+            "class_name": "malware",
+            "malware_score": 0.9978823131027981,
+            "model_version": "malware-lightgbm-20261028-v1",
+            "predicted_label": 1,
+            "threshold": 0.5,
+            "validated_feature_count": 25
+          },
+          "result_id": "02f384c1-cf84-4921-aa8e-e039f1b4a5be",
+          "tool": "predict_single"
+        }
+      ],
+      "turns": 3,
+      "tool_calls": 2
+    },
+    {
+      "name": "AE-04 threshold not met",
+      "conversation_id": "976ffcf5-3dbd-4e30-b6ba-f7b892ff1941",
+      "request": {
+        "message": "Evaluate this labeled file and predict the supplied record only if accuracy is at least 98%. File reference: 1a71eab0-d668-4821-8330-07dd99df28b2. Record: {\"record\": {\"BaseOfCode\": 4096, \"BaseOfData\": 2072576, \"Characteristics\": 33167, \"DllCharacteristics\": 0, \"Entropy\": 7.987439212410243, \"FileAlignment\": 512, \"Identify\": \"\", \"ImageBase\": 65536, \"ImportedDlls\": \"kernel32.dll\", \"ImportedSymbols\": \"sleep\", \"Machine\": 332, \"Magic\": 267, \"NumberOfRvaAndSizes\": 16, \"NumberOfSections\": 6, \"NumberOfSymbols\": 0, \"PE_TYPE\": 267, \"PointerToSymbolTable\": 0, \"Size\": 8643584, \"SizeOfCode\": 2063872, \"SizeOfHeaders\": 1024, \"SizeOfImage\": 11616256, \"SizeOfInitializedData\": 7505408, \"SizeOfOptionalHeader\": 224, \"SizeOfUninitializedData\": 0, \"TimeDateStamp\": 1432757946}}",
+        "condition": {
+          "minimum_accuracy": 98,
+          "evaluation_file_reference": "1a71eab0-d668-4821-8330-07dd99df28b2"
+        },
+        "context_result_id": null
+      },
+      "referenced_result": null,
+      "http_status": 200,
+      "expected_tools": [
+        "evaluate_labeled"
+      ],
+      "actual_tools": [
+        "evaluate_labeled"
+      ],
+      "expected_success": true,
+      "ok": true,
+      "behavior_ok": true,
+      "checks": {
+        "tools": true,
+        "success": true,
+        "accuracyZero": true,
+        "noPrediction": true
+      },
+      "error_code": null,
+      "final_answer": "The evaluation completed, but the accuracy threshold is not met, so I will not run the single-record prediction.\n\n**Evaluation of the uploaded file** (`labels-flipped.csv`, this file's own tool result — not the official holdout statistics):\n\n- Samples: `20`\n- True class counts: `10` goodware (`0`), `10` malware (`1`)\n- Accuracy: `0.0` — below your `98%` requirement\n- AUC: `0.0`\n- Confusion matrix (rows = true labels, columns = predicted labels): `[[0,10],[10,0]]`\n- True negatives (tn): `0`; false positives (fp): `10`; false negatives (fn): `10`; true positives (tp): `0`\n- Decision threshold: `0.5`; model version: `malware-lightgbm-20261028-v1`\n- Tool interpretation note: metrics describe only this uploaded CSV; independence from training data and representativeness of future files are not verified by the model.\n\nAll `10` goodware rows were predicted as malware (false positives) and all `10` malware rows were predicted as goodware (false negatives) — an inverted pattern on this file. Because accuracy is `0.0` and your condition required at least `98%`, I did not classify the supplied record. For reference, the trusted official hold-out metadata is separate from this result and should not be treated as a metric for this uploaded CSV.\n\nIf you'd like, I can still classify the record without the accuracy gating condition — please confirm.",
+      "activities": [
+        {
+          "accuracy": 0.0,
+          "arguments": {
+            "file_reference": "1a71eab0-d668-4821-8330-07dd99df28b2"
+          },
+          "auc": 0.0,
+          "minimum_accuracy": 0.98,
+          "model_version": "malware-lightgbm-20261028-v1",
+          "result_id": "7f6dc457-3b20-4d31-8ef3-2aadbea12b2a",
+          "sample_count": 20,
+          "status": "succeeded",
+          "tool": "evaluate_labeled"
+        }
+      ],
+      "result_ids": [
+        "7f6dc457-3b20-4d31-8ef3-2aadbea12b2a"
+      ],
+      "structured_results": [
+        {
+          "data": {
+            "accuracy": 0.0,
+            "auc": 0.0,
+            "auc_reason": null,
+            "class_mapping": {
+              "0": "goodware",
+              "1": "malware"
+            },
+            "confusion_matrix": {
+              "columns": "predicted labels",
+              "fn": 10,
+              "fp": 10,
+              "label_order": [
+                0,
+                1
+              ],
+              "matrix": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  10,
+                  0
+                ]
+              ],
+              "rows": "true labels",
+              "tn": 0,
+              "tp": 0
+            },
+            "file_name": "labels-flipped.csv",
+            "file_reference": "1a71eab0-d668-4821-8330-07dd99df28b2",
+            "interpretation_note": "Metrics describe only this uploaded CSV. Independence from training data and representativeness of future files are not verified by the model.",
+            "model_version": "malware-lightgbm-20261028-v1",
+            "sample_count": 20,
+            "threshold": 0.5,
+            "true_class_counts": {
+              "0": 10,
+              "1": 10
+            }
+          },
+          "result_id": "7f6dc457-3b20-4d31-8ef3-2aadbea12b2a",
+          "tool": "evaluate_labeled"
+        }
+      ],
+      "turns": 2,
+      "tool_calls": 1
+    },
+    {
+      "name": "AE-05 false-negative follow-up",
+      "conversation_id": "5e60c4ea-1fe0-46af-bf9f-270e3191baa8",
+      "request": {
+        "message": "How many false negatives were there in that evaluation?",
+        "condition": null,
+        "context_result_id": "323324a6-0351-4ccd-a3f2-efe07bd1e5df"
+      },
+      "referenced_result": {
+        "data": {
+          "accuracy": 1.0,
+          "auc": 1.0,
+          "auc_reason": null,
+          "class_mapping": {
+            "0": "goodware",
+            "1": "malware"
+          },
+          "confusion_matrix": {
+            "columns": "predicted labels",
+            "fn": 0,
+            "fp": 0,
+            "label_order": [
+              0,
+              1
+            ],
+            "matrix": [
+              [
+                10,
+                0
+              ],
+              [
+                0,
+                10
+              ]
+            ],
+            "rows": "true labels",
+            "tn": 10,
+            "tp": 10
+          },
+          "file_name": "labeled-sample.csv",
+          "file_reference": "f450c1dd-f726-4a8d-a1e6-24c588f8d792",
+          "interpretation_note": "This is the built-in workflow fixture, sampled from the development partition used to fit the production model; its metrics are not a valid estimate of performance on unseen files.",
+          "model_version": "malware-lightgbm-20261028-v1",
+          "sample_count": 20,
+          "threshold": 0.5,
+          "true_class_counts": {
+            "0": 10,
+            "1": 10
+          }
+        },
+        "result_id": "323324a6-0351-4ccd-a3f2-efe07bd1e5df",
+        "tool": "evaluate_labeled"
+      },
+      "http_status": 200,
+      "expected_tools": [],
+      "actual_tools": [],
+      "expected_success": true,
+      "ok": true,
+      "behavior_ok": true,
+      "checks": {
+        "tools": true,
+        "success": true,
+        "mentionsZero": true
+      },
+      "error_code": null,
+      "final_answer": "There were 0 false negatives in the evaluation of labeled-sample.csv.\n\nFrom that file's tool result:\n- False negatives (actual malware predicted as goodware): 0\n- For context, the confusion matrix was tn 10, fp 0, fn 0, tp 10, with threshold 0.5.\n\nNote this is a metric for the uploaded CSV only, not an unseen-data performance estimate. The file itself is described in the result as the built-in 20-row workflow fixture sampled from the development partition used to fit the production model, so its metrics are not a valid estimate of performance on unseen files.",
+      "activities": [],
+      "result_ids": [],
+      "structured_results": [],
+      "turns": 1,
+      "tool_calls": 0
+    },
+    {
+      "name": "AE-06 invalid feature input",
+      "conversation_id": "a0f3dc2f-d42f-4fc3-8554-259d4863d031",
+      "request": {
+        "message": "Use predict_batch for file reference ec35a126-b686-42c2-9fd5-aca57f438cb4",
+        "condition": null,
+        "context_result_id": null
+      },
+      "referenced_result": null,
+      "http_status": 422,
+      "expected_tools": [
+        "predict_batch"
+      ],
+      "actual_tools": [
+        "predict_batch"
+      ],
+      "expected_success": false,
+      "ok": false,
+      "behavior_ok": true,
+      "checks": {
+        "tools": true,
+        "success": true,
+        "failureSurfaced": true
+      },
+      "error_code": "tool_failure",
+      "final_answer": "Tool predict_batch failed: No rows were valid",
+      "activities": [
+        {
+          "arguments": {
+            "file_reference": "ec35a126-b686-42c2-9fd5-aca57f438cb4"
+          },
+          "goodware_count": 0,
+          "input_rows": 1,
+          "invalid_rows": 1,
+          "malware_count": 0,
+          "model_version": "malware-lightgbm-20261028-v1",
+          "status": "failed",
+          "tool": "predict_batch",
+          "valid_rows": 0
+        }
+      ],
+      "result_ids": [],
+      "structured_results": [],
+      "turns": 1,
+      "tool_calls": 1
+    },
+    {
+      "name": "AE-07 missing labels",
+      "conversation_id": "5e03fd72-8d5b-40ac-9aac-32c9d32e1cb2",
+      "request": {
+        "message": "Evaluate labeled file reference 2125a5dd-1d19-41b5-9b7f-bcaf9302eb9b",
+        "condition": null,
+        "context_result_id": null
+      },
+      "referenced_result": null,
+      "http_status": 422,
+      "expected_tools": [
+        "evaluate_labeled"
+      ],
+      "actual_tools": [
+        "evaluate_labeled"
+      ],
+      "expected_success": false,
+      "ok": false,
+      "behavior_ok": true,
+      "checks": {
+        "tools": true,
+        "success": true,
+        "missingLabelSurfaced": true
+      },
+      "error_code": "tool_failure",
+      "final_answer": "Tool evaluate_labeled failed: CSV must contain a Label column",
+      "activities": [
+        {
+          "arguments": {
+            "file_reference": "2125a5dd-1d19-41b5-9b7f-bcaf9302eb9b"
+          },
+          "error_code": "missing_labels",
+          "status": "failed",
+          "tool": "evaluate_labeled"
+        }
+      ],
+      "result_ids": [],
+      "structured_results": [],
+      "turns": 1,
+      "tool_calls": 1
+    },
+    {
+      "name": "AE-08 single-class evaluation",
+      "conversation_id": "24063eca-4cbe-41b9-9684-f61a90842171",
+      "request": {
+        "message": "Evaluate this one-class labeled CSV file reference 1c829bee-a2d5-4582-9d51-26584ee1b144",
+        "condition": null,
+        "context_result_id": null
+      },
+      "referenced_result": null,
+      "http_status": 200,
+      "expected_tools": [
+        "evaluate_labeled"
+      ],
+      "actual_tools": [
+        "evaluate_labeled"
+      ],
+      "expected_success": true,
+      "ok": true,
+      "behavior_ok": true,
+      "checks": {
+        "tools": true,
+        "success": true,
+        "aucUndefined": true
+      },
+      "error_code": null,
+      "final_answer": "Evaluation completed successfully for `single-class.csv`.\n\n**Results for this uploaded CSV**\n- Samples: `5`\n- True class counts: `{\"0\":5,\"1\":0}` — all rows are goodware (class mapping: `0` = goodware, `1` = malware)\n- AUC: `null` — undefined because only one true class is present\n- Accuracy: `1.0`\n- Threshold: `0.5`\n- Confusion matrix (rows = true labels, columns = predicted labels):\n\n| | pred goodware | pred malware |\n|---|---|---|\n| true goodware | 5 | 0 |\n| true malware | 0 | 0 |\n\n- TN: `5`, FP: `0`, FN: `0`, TP: `0`\n- Model version: `malware-lightgbm-20261028-v1`\n\n**Interpretation caveats**\n- Because the file contains only one class, AUC cannot be computed, so you have no class-separation measure here.\n- All `5` rows were predicted goodware, and all `5` were actually goodware — so there are no false positives and no false negatives in this file. However, there are no malware samples, so this file provides no evidence about detection of malware.\n- These numbers describe only this uploaded CSV. Independence from training data and representativeness of future files are not verified by the model.\n\n**Official project statistics (not metrics for this CSV)** — from the trusted model metadata context: the one-time untouched final test set (9531 rows) reported AUC `0.9952955325663181` and accuracy `0.9710418633931381`. Those figures should not be substituted for the results above.",
+      "activities": [
+        {
+          "accuracy": 1.0,
+          "arguments": {
+            "file_reference": "1c829bee-a2d5-4582-9d51-26584ee1b144"
+          },
+          "auc": null,
+          "model_version": "malware-lightgbm-20261028-v1",
+          "result_id": "a44595f3-eab8-4c50-9121-a8babf40a571",
+          "sample_count": 5,
+          "status": "succeeded",
+          "tool": "evaluate_labeled"
+        }
+      ],
+      "result_ids": [
+        "a44595f3-eab8-4c50-9121-a8babf40a571"
+      ],
+      "structured_results": [
+        {
+          "data": {
+            "accuracy": 1.0,
+            "auc": null,
+            "auc_reason": "AUC is undefined because only one true class is present",
+            "class_mapping": {
+              "0": "goodware",
+              "1": "malware"
+            },
+            "confusion_matrix": {
+              "columns": "predicted labels",
+              "fn": 0,
+              "fp": 0,
+              "label_order": [
+                0,
+                1
+              ],
+              "matrix": [
+                [
+                  5,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              "rows": "true labels",
+              "tn": 5,
+              "tp": 0
+            },
+            "file_name": "single-class.csv",
+            "file_reference": "1c829bee-a2d5-4582-9d51-26584ee1b144",
+            "interpretation_note": "Metrics describe only this uploaded CSV. Independence from training data and representativeness of future files are not verified by the model.",
+            "model_version": "malware-lightgbm-20261028-v1",
+            "sample_count": 5,
+            "threshold": 0.5,
+            "true_class_counts": {
+              "0": 5,
+              "1": 0
+            }
+          },
+          "result_id": "a44595f3-eab8-4c50-9121-a8babf40a571",
+          "tool": "evaluate_labeled"
+        }
+      ],
+      "turns": 2,
+      "tool_calls": 1
+    },
+    {
+      "name": "AE-09 unavailable file tool failure",
+      "conversation_id": "997ef170-bb05-4168-82cd-6e68eddd2d47",
+      "request": {
+        "message": "Evaluate labeled CSV file reference 0691ca54-7b10-44ce-9e96-d0229d04cd93",
+        "condition": null,
+        "context_result_id": null
+      },
+      "referenced_result": null,
+      "http_status": 422,
+      "expected_tools": [
+        "evaluate_labeled"
+      ],
+      "actual_tools": [
+        "evaluate_labeled"
+      ],
+      "expected_success": false,
+      "ok": false,
+      "behavior_ok": true,
+      "checks": {
+        "tools": true,
+        "success": true,
+        "toolFailureSurfaced": true
+      },
+      "error_code": "tool_failure",
+      "final_answer": "Tool evaluate_labeled failed: File reference is missing or does not belong to this session",
+      "activities": [
+        {
+          "arguments": {
+            "file_reference": "0691ca54-7b10-44ce-9e96-d0229d04cd93"
+          },
+          "error_code": "invalid_file",
+          "status": "failed",
+          "tool": "evaluate_labeled"
+        }
+      ],
+      "result_ids": [],
+      "structured_results": [],
+      "turns": 1,
+      "tool_calls": 1
+    }
+  ]
+}

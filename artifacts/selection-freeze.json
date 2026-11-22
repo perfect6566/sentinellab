@@ -1,0 +1,6 @@
+{
+  "production_config_path": "config/production.json",
+  "production_config_sha256": "1ffc985b1722a65e7944e5d8af91295663403031082dc28b4a197cdb045e4cac",
+  "frozen_at": "2026-10-28T09:01:12.789689+00:00",
+  "holdout_accessed": false
+}

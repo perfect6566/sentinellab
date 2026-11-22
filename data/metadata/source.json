@@ -1,0 +1,31 @@
+{
+  "dataset_name": "Brazilian Malware Dataset",
+  "repository_url": "https://github.com/fabriciojoc/brazilian-malware-dataset",
+  "retrieved_at": "2026-10-28",
+  "retrieval_method": "manual GitHub repository archive download",
+  "outer_archive": {
+    "original_filename": "brazilian-malware-dataset-master.zip",
+    "byte_size": 295136135,
+    "sha256": "daa95ee99d9a70507c0ddceb1a5a1cd632e1804e92807db9109abcb2a6cf6940"
+  },
+  "nested_archive": {
+    "path_in_outer_archive": "brazilian-malware-dataset-master/brazilian-malware.zip",
+    "sha256": "657136309532868b78b646b14716013d5c36681f5d4bd008536523c1912ea7b7"
+  },
+  "selected_structured_file": {
+    "path_in_nested_archive": "brazilian-malware.csv",
+    "local_path": "data/raw/brazilian-malware.csv",
+    "sha256": "d13e54cf1970ffedbf1043196c135da3187c90a82e397f681d843ed320249242",
+    "row_count": 50181,
+    "column_count": 28
+  },
+  "citation": {
+    "title": "The Need for Speed: An Analysis of Brazilian Malware Classifiers",
+    "authors": "F. Ceschin, F. Pinage, M. Castilho, D. Menotti, L. S. Oliveira, A. Gregio",
+    "venue": "IEEE Security & Privacy, 16(6), 31-41",
+    "year": 2018,
+    "doi": "10.1109/MSEC.2018.2875369"
+  },
+  "license_status": "No explicit license file was visible in the downloaded repository archive; usage/citation terms must be confirmed before redistribution.",
+  "safety": "Only the structured CSV was extracted. No executable malware was requested, extracted or executed."
+}

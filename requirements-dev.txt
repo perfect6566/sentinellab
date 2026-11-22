@@ -1,0 +1,12 @@
+# Pinned development/training dependencies for Python 3.11.
+# Runtime deps are in requirements-runtime.txt; install both for full dev setup:
+#   python -m pip install -r requirements-runtime.txt -r requirements-dev.txt
+# Training-only model families (kept for ml/train + ml/tune reproducibility).
+catboost>=1.2,<2
+torch>=2.6,<3
+xgboost>=2.1,<4
+# Dev tooling
+mypy>=1.14,<2
+pytest>=8.3,<10
+pytest-cov>=6,<8
+ruff>=0.9,<1

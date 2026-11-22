@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "scenarios": [
+    {
+      "id": "AE-01",
+      "name": "single prediction",
+      "input": "samples/single-record.json",
+      "expected_tools": ["predict_single"],
+      "must_not_call": []
+    },
+    {
+      "id": "AE-02",
+      "name": "batch prediction",
+      "input": "samples/batch-sample.csv",
+      "expected_tools": ["predict_batch"],
+      "must_not_call": []
+    },
+    {
+      "id": "AE-03",
+      "name": "evaluation passes threshold then predicts",
+      "input": "samples/labeled-sample.csv + samples/single-record.json",
+      "minimum_accuracy": 0.98,
+      "expected_tools": ["evaluate_labeled", "predict_single"],
+      "must_not_call": []
+    },
+    {
+      "id": "AE-04",
+      "name": "evaluation below threshold stops prediction",
+      "input": "samples/evaluation/labels-flipped.csv + samples/single-record.json",
+      "minimum_accuracy": 0.98,
+      "expected_tools": ["evaluate_labeled"],
+      "must_not_call": ["predict_single"]
+    },
+    {
+      "id": "AE-05",
+      "name": "follow-up false negatives",
+      "input": "result object from AE-03 or AE-04",
+      "expected_tools": [],
+      "must_not_call": ["predict_single", "predict_batch", "evaluate_labeled"]
+    },
+    {
+      "id": "AE-06",
+      "name": "invalid feature input",
+      "input": "samples/evaluation/invalid-feature.csv",
+      "expected_tools": ["predict_batch"],
+      "must_not_call": []
+    },
+    {
+      "id": "AE-07",
+      "name": "missing labels",
+      "input": "samples/evaluation/missing-label.csv",
+      "expected_tools": ["evaluate_labeled"],
+      "must_not_call": ["predict_single"]
+    },
+    {
+      "id": "AE-08",
+      "name": "single-class evaluation",
+      "input": "samples/evaluation/single-class.csv",
+      "expected_tools": ["evaluate_labeled"],
+      "must_not_call": []
+    },
+    {
+      "id": "AE-09",
+      "name": "controlled tool or provider failure",
+      "input": "server-side test-only failure adapter",
+      "expected_tools": ["evaluate_labeled"],
+      "must_not_call": ["predict_single"]
+    }
+  ]
+}

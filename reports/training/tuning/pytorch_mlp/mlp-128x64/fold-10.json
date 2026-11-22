@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "config_hash": "5cec578aafdb370c5339f55cee29e4b670968a662a1041569d4f1c7b443b3560",
+  "model": "pytorch_mlp",
+  "fold": 10,
+  "train_rows": 34310,
+  "validation_rows": 3812,
+  "train_groups": 31184,
+  "validation_groups": 3467,
+  "group_overlap": 0,
+  "auc": 0.9523931250613616,
+  "accuracy": 0.9244491080797481,
+  "elapsed_seconds": 3.7816902920003486,
+  "score_min": 1.589286512171384e-05,
+  "score_max": 1.0
+}

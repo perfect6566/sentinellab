@@ -1,0 +1,7 @@
+{
+  "evaluated_at": "2026-10-28T09:01:55.209667+00:00",
+  "production_config_sha256": "1ffc985b1722a65e7944e5d8af91295663403031082dc28b4a197cdb045e4cac",
+  "holdout_report_sha256": "73a83ac93bcd4fc44ef188fad789c5a9fdbde9234667a5d1fe3d8ef93de3255e",
+  "artifact_sha256": "2e0dd9f4f57554efca6d0dcdc0af5af79f9a7abfc383f70569e1662afb6d4791",
+  "do_not_repeat_for_model_selection": true
+}

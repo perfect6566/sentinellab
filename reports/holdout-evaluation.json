@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "evaluation_type": "one-time untouched final hold-out",
+  "evaluated_at": "2026-10-28T09:01:55.209667+00:00",
+  "production_config_sha256": "1ffc985b1722a65e7944e5d8af91295663403031082dc28b4a197cdb045e4cac",
+  "model_name": "lightgbm",
+  "model_version": "malware-lightgbm-20261028-v1",
+  "threshold": 0.5,
+  "class_mapping": {
+    "0": "goodware",
+    "1": "malware"
+  },
+  "development_rows_fitted": 38122,
+  "development_groups_fitted": 34651,
+  "test_rows": 9531,
+  "test_groups": 8742,
+  "fit_seconds": 3.9048702500003856,
+  "inference_seconds": 0.51571524999963,
+  "metrics": {
+    "auc": 0.9952955325663181,
+    "accuracy": 0.9710418633931381,
+    "confusion_matrix": {
+      "label_order": [
+        0,
+        1
+      ],
+      "rows": "true labels",
+      "columns": "predicted labels",
+      "matrix": [
+        [
+          4167,
+          53
+        ],
+        [
+          223,
+          5088
+        ]
+      ],
+      "tn": 4167,
+      "fp": 53,
+      "fn": 223,
+      "tp": 5088
+    }
+  },
+  "selection_policy": "Configuration was frozen before test access; results must not trigger retuning or reselection."
+}

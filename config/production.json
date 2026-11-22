@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "frozen_at": "2026-10-28T09:01:12.789689+00:00",
+  "frozen_before_holdout_evaluation": true,
+  "model_version": "malware-lightgbm-20261028-v1",
+  "model_name": "lightgbm",
+  "selected_candidate": "lgbm-leaves31",
+  "pipeline_params": {
+    "classifier__n_estimators": 250,
+    "classifier__num_leaves": 31,
+    "classifier__learning_rate": 0.05,
+    "classifier__subsample": 0.8,
+    "classifier__colsample_bytree": 0.8
+  },
+  "preprocessing": {
+    "numeric": "median imputation, fold-fitted variance filter, no scaling for tree model",
+    "Identify": "explicit missing category and one-hot encoding",
+    "ImportedDlls_hash_features": 256,
+    "ImportedSymbols_hash_features": 256,
+    "excluded_columns": [
+      "Label",
+      "SHA1",
+      "FirstSeenDate"
+    ],
+    "candidate_model_feature_count": 25
+  },
+  "classification_threshold": 0.5,
+  "class_mapping": {
+    "0": "goodware",
+    "1": "malware"
+  },
+  "cv_metrics": {
+    "auc_mean": 0.9965928797104103,
+    "auc_std": 0.002102156576001175,
+    "accuracy_mean": 0.9768895290838294,
+    "accuracy_std": 0.009554254056599857
+  },
+  "random_seed": 20261028,
+  "source_dataset_sha256": "d13e54cf1970ffedbf1043196c135da3187c90a82e397f681d843ed320249242",
+  "split_manifest_sha256": "fa843af3135bc656d2663a3012ea3d7e4148a676f688f330106a5659e7655f51",
+  "model_schema_sha256": "07eb842f3d0adffd0dbc88fb7f0557239a869a9601df121eb95810fd13877a29",
+  "project_config_sha256": "0f2a8510d3968222f36eda19e765c43a777eab5b394d7497ecb675ae0d5e806d",
+  "comparison_report_sha256": "ba0ab4c617bd4f1eab98ebbb8359af6de335f88c438e949053c96c97799c0b71",
+  "holdout_metrics": null,
+  "rule": "Do not change this configuration based on final hold-out results."
+}

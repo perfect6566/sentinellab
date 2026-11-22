@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "config_hash": "d34a3343d2facbe3708a04b2615cd03e499dc0fed0fe081d1cc68672ba6fab54",
+  "model": "xgboost",
+  "fold": 1,
+  "train_rows": 34309,
+  "validation_rows": 3813,
+  "train_groups": 31192,
+  "validation_groups": 3459,
+  "group_overlap": 0,
+  "auc": 0.9976356286590465,
+  "accuracy": 0.986362444269604,
+  "elapsed_seconds": 5.116342916999201,
+  "score_min": 7.913012086646631e-05,
+  "score_max": 0.9998424053192139
+}

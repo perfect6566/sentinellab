@@ -1,0 +1,14 @@
+{
+  "project_version": "0.1.0",
+  "random_seed": 20261028,
+  "label_column": "Label",
+  "label_mapping": {"0": "goodware", "1": "malware"},
+  "group_column": "SHA1",
+  "excluded_metadata_columns": ["FirstSeenDate"],
+  "holdout_fraction": 0.2,
+  "cv_folds": 10,
+  "primary_metric": "roc_auc",
+  "secondary_metric": "accuracy",
+  "default_classification_threshold": 0.5,
+  "confusion_matrix_label_order": [0, 1]
+}

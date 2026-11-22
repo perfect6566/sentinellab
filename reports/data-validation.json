@@ -1,0 +1,401 @@
+{
+  "source_path": "data/raw/brazilian-malware.csv",
+  "filename": "brazilian-malware.csv",
+  "byte_size": 160874753,
+  "sha256": "d13e54cf1970ffedbf1043196c135da3187c90a82e397f681d843ed320249242",
+  "audited_at": "2026-10-28T08:23:29.582666+00:00",
+  "row_count": 50181,
+  "column_count": 28,
+  "feature_count": 27,
+  "label_column": "Label",
+  "label_mapping_expected": {
+    "0": "goodware",
+    "1": "malware"
+  },
+  "label_counts": {
+    "0": 21116,
+    "1": 29065
+  },
+  "header": [
+    "BaseOfCode",
+    "BaseOfData",
+    "Characteristics",
+    "DllCharacteristics",
+    "Entropy",
+    "FileAlignment",
+    "FirstSeenDate",
+    "Identify",
+    "ImageBase",
+    "ImportedDlls",
+    "ImportedSymbols",
+    "Label",
+    "Machine",
+    "Magic",
+    "NumberOfRvaAndSizes",
+    "NumberOfSections",
+    "NumberOfSymbols",
+    "PE_TYPE",
+    "PointerToSymbolTable",
+    "SHA1",
+    "Size",
+    "SizeOfCode",
+    "SizeOfHeaders",
+    "SizeOfImage",
+    "SizeOfInitializedData",
+    "SizeOfOptionalHeader",
+    "SizeOfUninitializedData",
+    "TimeDateStamp"
+  ],
+  "duplicate_row_count": 2480,
+  "columns": [
+    {
+      "name": "BaseOfCode",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 665,
+      "sample_values": [
+        "4096",
+        "1359872",
+        "192512",
+        "8192",
+        "524288"
+      ]
+    },
+    {
+      "name": "BaseOfData",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 1667,
+      "sample_values": [
+        "69632",
+        "1851392",
+        "40960",
+        "2138112",
+        "245760"
+      ]
+    },
+    {
+      "name": "Characteristics",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 72,
+      "sample_values": [
+        "783",
+        "33166",
+        "775",
+        "259",
+        "782"
+      ]
+    },
+    {
+      "name": "DllCharacteristics",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 60,
+      "sample_values": [
+        "0",
+        "32768",
+        "33088",
+        "320",
+        "256"
+      ]
+    },
+    {
+      "name": "Entropy",
+      "inferred_type": "number",
+      "missing_count": 0,
+      "unique_count": 43411,
+      "sample_values": [
+        "5.981248597142612",
+        "6.081747070514648",
+        "5.586421743992132",
+        "7.969463745959151",
+        "7.999899841773473"
+      ]
+    },
+    {
+      "name": "FileAlignment",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 7,
+      "sample_values": [
+        "512",
+        "4096",
+        "128",
+        "32",
+        "1024"
+      ]
+    },
+    {
+      "name": "FirstSeenDate",
+      "inferred_type": "string",
+      "missing_count": 0,
+      "unique_count": 2340,
+      "sample_values": [
+        "1970-01-01",
+        "1970-01-03",
+        "1970-01-04",
+        "1970-01-06",
+        "1970-01-07"
+      ]
+    },
+    {
+      "name": "Identify",
+      "inferred_type": "string",
+      "missing_count": 14223,
+      "unique_count": 242,
+      "sample_values": [
+        "powerbasic/win 8.00",
+        "",
+        "upx 2.93 - 3.00 [lzma] -> markus oberhumer, laszlo molnar & john reiser upx 2.93 (lzma) upx v3.0 (exe_lzma) -> markus ob",
+        "upx v0.89.6 - v1.02 / v1.05 - v1.22 upx v0.80 - v0.84 upx 2.90 [lzma] -> markus oberhumer, laszlo molnar & john reiser u",
+        "upx -> www.upx.sourceforge.net upx v1.25 (delphi) stub"
+      ]
+    },
+    {
+      "name": "ImageBase",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 3809,
+      "sample_values": [
+        "4194304",
+        "65536",
+        "1358954496",
+        "1593835520",
+        "268435456"
+      ]
+    },
+    {
+      "name": "ImportedDlls",
+      "inferred_type": "string",
+      "missing_count": 0,
+      "unique_count": 10813,
+      "sample_values": [
+        "comdlg32.dll gdi32.dll kernel32.dll ole32.dll oleaut32.dll user32.dll comctl32.dll libnodave.dll",
+        "comctl32.dll comdlg32.dll gdi32.dll kernel32.dll ole32.dll oleaut32.dll shell32.dll user32.dll version.dll",
+        "comdlg32.dll kernel32.dll msvcrt.dll msvcrt.dll user32.dll",
+        "kernel32.dll advapi32.dll comdlg32.dll gdi32.dll msvcrt.dll ole32.dll setupapi.dll shell32.dll shlwapi.dll user32.dll wi",
+        "advapi32.dll comctl32.dll gdi32.dll kernel32.dll ole32.dll shell32.dll user32.dll"
+      ]
+    },
+    {
+      "name": "ImportedSymbols",
+      "inferred_type": "string",
+      "missing_count": 0,
+      "unique_count": 18747,
+      "sample_values": [
+        "printdlga getopenfilenamea getsavefilenamea bitblt createcompatiblebitmap createcompatibledc createfontindirecta creates",
+        "imagelist_add imagelist_addmasked imagelist_begindrag imagelist_copy imagelist_create imagelist_destroy imagelist_dragen",
+        "getopenfilenamea closehandle createfilea createthread deletecriticalsection deviceiocontrol entercriticalsection exitpro",
+        "loadlibrarya getprocaddress virtualprotect virtualalloc virtualfree exitprocess regclosekey getopenfilenamew textoutw _i",
+        "regclosekey regcreatekeyexa regdeletekeya regdeletevaluea regenumkeya regenumvaluea regopenkeyexa regqueryvalueexa regse"
+      ]
+    },
+    {
+      "name": "Label",
+      "inferred_type": "boolean",
+      "missing_count": 0,
+      "unique_count": 2,
+      "sample_values": [
+        "0",
+        "1"
+      ]
+    },
+    {
+      "name": "Machine",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 3,
+      "sample_values": [
+        "332",
+        "450",
+        "452"
+      ]
+    },
+    {
+      "name": "Magic",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 1,
+      "sample_values": [
+        "267"
+      ]
+    },
+    {
+      "name": "NumberOfRvaAndSizes",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 31,
+      "sample_values": [
+        "16",
+        "1012102006",
+        "1429296335",
+        "1110451080",
+        "15"
+      ]
+    },
+    {
+      "name": "NumberOfSections",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 21,
+      "sample_values": [
+        "5",
+        "6",
+        "9",
+        "3",
+        "7"
+      ]
+    },
+    {
+      "name": "NumberOfSymbols",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 77,
+      "sample_values": [
+        "0",
+        "1574",
+        "1542",
+        "2226",
+        "739"
+      ]
+    },
+    {
+      "name": "PE_TYPE",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 1,
+      "sample_values": [
+        "267"
+      ]
+    },
+    {
+      "name": "PointerToSymbolTable",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 92,
+      "sample_values": [
+        "0",
+        "75264",
+        "73728",
+        "194560",
+        "12800"
+      ]
+    },
+    {
+      "name": "SHA1",
+      "inferred_type": "string",
+      "missing_count": 0,
+      "unique_count": 43411,
+      "sample_values": [
+        "b0068836a40e6a43c6b546fcb709237e5aa223d1",
+        "5741708cd785f13b44267883e3f2fd2fa51fc23f",
+        "507fe5d8244f33d29d427468efca4ce406f23666",
+        "e51a7811464be1acadf6e72ba3a66aba0da438cd",
+        "0e046d9903c313ffeeb0d6392335437fe881b1f5"
+      ]
+    },
+    {
+      "name": "Size",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 18419,
+      "sample_values": [
+        "76288",
+        "2558464",
+        "178688",
+        "806816",
+        "50689096"
+      ]
+    },
+    {
+      "name": "SizeOfCode",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 5431,
+      "sample_values": [
+        "64855",
+        "1843888",
+        "33792",
+        "778240",
+        "35840"
+      ]
+    },
+    {
+      "name": "SizeOfHeaders",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 15,
+      "sample_values": [
+        "1024",
+        "4096",
+        "512",
+        "1536",
+        "20480"
+      ]
+    },
+    {
+      "name": "SizeOfImage",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 3408,
+      "sample_values": [
+        "86016",
+        "2600960",
+        "33759232",
+        "2166784",
+        "303104"
+      ]
+    },
+    {
+      "name": "SizeOfInitializedData",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 4728,
+      "sample_values": [
+        "2560",
+        "500348",
+        "177664",
+        "28672",
+        "38912"
+      ]
+    },
+    {
+      "name": "SizeOfOptionalHeader",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 1,
+      "sample_values": [
+        "224"
+      ]
+    },
+    {
+      "name": "SizeOfUninitializedData",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 741,
+      "sample_values": [
+        "1500",
+        "21476",
+        "33557504",
+        "1355776",
+        "110080"
+      ]
+    },
+    {
+      "name": "TimeDateStamp",
+      "inferred_type": "integer",
+      "missing_count": 0,
+      "unique_count": 24241,
+      "sample_values": [
+        "12345",
+        "0",
+        "196608",
+        "327680",
+        "325210"
+      ]
+    }
+  ],
+  "differences": [],
+  "passed": true
+}
